@@ -1,0 +1,19 @@
+section {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 50%;
+    align-self: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-card-title {
+    text-align: center;
+}

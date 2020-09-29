@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PagesModule } from './pages/pages.module';
+import { EventService } from './shared/services/event.service'
 
 @NgModule( {
   declarations: [
@@ -17,7 +18,7 @@ import { PagesModule } from './pages/pages.module';
     BrowserAnimationsModule,
     PagesModule,
   ],
-  providers: [],
+  providers: [ EventService ],
   bootstrap: [ AppComponent ]
 } )
 export class AppModule { }

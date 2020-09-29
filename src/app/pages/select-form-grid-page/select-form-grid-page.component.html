@@ -1,1 +1,59 @@
-<p>select-form-grid-page works!</p>
+<section fxLayout="row wrap" fxLayoutAlign="center center">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>Select grid for your form</mat-card-title>
+        <form [formGroup]="gridForm" (ngSubmit)="onCreate()" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+
+            <mat-card-content>
+                <mat-form-field appearance="fill">
+                    <mat-label>Number of rows</mat-label>
+                    <input matInput type="number" value="1" formControlName="rowsNumber" id="rowsNumber" min="1" max="10">
+                    <mat-hint align="end">Number must be between 1 and 10.</mat-hint>
+                    <mat-error *ngIf="hasError( 'rowsNumber', 'required') ">Field is required</mat-error>
+                    <mat-error *ngIf="hasError( 'rowsNumber', 'min')">Rows must be at least 1.
+                    </mat-error>
+                    <mat-error *ngIf="hasError( 'rowsNumber', 'max')">Rows must be less than 11.
+                    </mat-error>
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Row's height in px</mat-label>
+                    <input matInput type="number" value="100" formControlName="rowsHeight" id="rowsHeight" min="100" max="500">
+                    <mat-hint align="end">Row's height must be between 100 and 500.</mat-hint>
+                    <mat-error *ngIf="hasError( 'rowsHeight', 'required') ">Field is required</mat-error>
+                    <mat-error *ngIf="hasError( 'rowsHeight', 'min')">Min row's height must be 100.
+                    </mat-error>
+                    <mat-error *ngIf="hasError( 'rowsHeight', 'max')">Max row's height must be 500.
+                    </mat-error>
+
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Number of columns</mat-label>
+                    <input matInput type="number" value="1" formControlName="colsNumber" id="colsNumber" min="1" max="8">
+
+                    <mat-hint align="end">Columns must be between 1 and 8.</mat-hint>
+                    <mat-error *ngIf="hasError( 'colsNumber', 'required') ">Field is required</mat-error>
+                    <mat-error *ngIf="hasError( 'colsNumber', 'min')">Columns must be at least 1.
+                    </mat-error>
+                    <mat-error *ngIf="hasError( 'colsNumber', 'max')">Columns must be less than 9.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Column's width in px</mat-label>
+                    <input matInput type="number" value="200" formControlName="colsWidth" id="colsWidth" min="200" max="500">
+                    <mat-hint align="end">Column's width must be between 200 and 500.</mat-hint>
+                    <mat-error *ngIf="hasError( 'colsWidth', 'required') ">Field is required</mat-error>
+                    <mat-error *ngIf="hasError( 'colsWidth', 'min')">Min column's width must be 200.
+                    </mat-error>
+                    <mat-error *ngIf="hasError( 'colsWidth', 'max')">Max column's width must be 500.
+                    </mat-error>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions align="end">
+                <button mat-raised-button color="primary" [disabled]="!gridForm.valid">Create grid</button>
+                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+            </mat-card-actions>
+
+        </form>
+    </mat-card>
+</section>
