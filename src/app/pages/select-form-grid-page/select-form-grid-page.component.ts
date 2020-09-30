@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { GridModel } from '../../shared/models/GridModel';
 import { EventService } from '../../shared/services/event.service';
 import { Router } from '@angular/router'
 
@@ -12,7 +11,6 @@ import { Router } from '@angular/router'
 export class SelectFormGridPageComponent implements OnInit {
 
   gridForm: FormGroup;
-  private gridInfo: GridModel;
 
   constructor (
     private formBuilder: FormBuilder,
@@ -41,7 +39,6 @@ export class SelectFormGridPageComponent implements OnInit {
           value: this.gridForm.value
         }
       )
-      console.log( this.gridForm );
       this.router.navigate( [ 'form-creator', 'select-form-controls' ] );
       this.gridForm.reset;
     }

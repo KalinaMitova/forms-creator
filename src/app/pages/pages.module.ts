@@ -8,6 +8,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SelectFormGridPageComponent } from './select-form-grid-page/select-form-grid-page.component'
 import { SelectFormControlsPageComponent } from './select-form-controls-page/select-form-controls-page.component';
 import { FormPageComponent } from './form-page/form-page.component';
+import { SingleGridCellComponent } from './select-form-controls-page/single-grid-cell/single-grid-cell.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormPageComponent } from './form-page/form-page.component';
     SelectFormGridPageComponent,
     SelectFormControlsPageComponent,
     FormPageComponent,
+    SingleGridCellComponent,
   ],
   imports: [
     CommonModule,

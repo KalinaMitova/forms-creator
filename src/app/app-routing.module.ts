@@ -5,6 +5,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: 'form-creator',
+    redirectTo: 'form-creator/select-form-grid',
+    pathMatch: 'full'
+  },
+  {
+    path: 'form-creator',
     loadChildren: () => import( './pages/pages.module' ).then( m => m.PagesModule )
   },
   {

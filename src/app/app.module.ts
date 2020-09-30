@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PagesModule } from './pages/pages.module';
+import { SharedModule } from './shared/shared.module';
 import { EventService } from './shared/services/event.service'
 
 @NgModule( {
@@ -17,6 +18,7 @@ import { EventService } from './shared/services/event.service'
     AppRoutingModule,
     BrowserAnimationsModule,
     PagesModule,
+    SharedModule
   ],
   providers: [ EventService ],
   bootstrap: [ AppComponent ]
