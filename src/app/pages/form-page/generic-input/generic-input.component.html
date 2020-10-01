@@ -17,14 +17,7 @@
     </mat-error>
     {{controlDir.control.errors | json}}
 
-    <!-- Textarea -->
-    <!-- <textarea matInput *ngIf="formControl.type=='textarea'" type="{{formControl.type}}" #textarea (textarea)="onChange($event.target.value)" [minLength]="hasValidator('minLength')" [maxLength]="hasValidator('maxLength')" [required]="hasValidator('maxLength')">{{formControl.label}</textarea> -->
-    <!-- Errors for Textarea-->
-    <!-- <mat-error *ngIf="textarea.errors?.required">Field is required</mat-error>
-    <mat-error *ngIf="textarea.errors?.maxLength">Text must be {{formControl.validators['maxLength']}} symbols at least.
-    </mat-error>
-    <mat-error *ngIf="textarea.errors?.minLength">Text must not be more than {{formControl.validators['minLength']}} symbols.
-    </mat-error> -->
+
 
     <!-- Form Comtrol Input type select -->
     <!-- <mat-select [multiple]="formControl.type.indexOf('multiple')>-1" #select (select)="onChange($event.target.value)" [required]="hasValidator('required')">

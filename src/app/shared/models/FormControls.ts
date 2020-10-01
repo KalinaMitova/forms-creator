@@ -48,11 +48,9 @@ export const FormControls = [
         ]
       },
       {
-        type: 'textArea',
+        type: 'textarea',
         validators: [
           'required',
-          'minLength',
-          'maxLength',
         ]
       },
       {

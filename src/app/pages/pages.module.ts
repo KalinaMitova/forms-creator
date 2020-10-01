@@ -10,6 +10,7 @@ import { SelectFormControlsPageComponent } from './select-form-controls-page/sel
 import { FormPageComponent } from './form-page/form-page.component';
 import { SingleGridCellComponent } from './select-form-controls-page/single-grid-cell/single-grid-cell.component';
 import { GenericInputComponent, inputValidator } from './form-page/generic-input/generic-input.component';
+import { GenericTextareaComponent } from './form-page/generic-textarea/generic-textarea.component';
 
 
 
@@ -20,6 +21,7 @@ import { GenericInputComponent, inputValidator } from './form-page/generic-input
     FormPageComponent,
     SingleGridCellComponent,
     GenericInputComponent,
+    GenericTextareaComponent,
   ],
   imports: [
     CommonModule,

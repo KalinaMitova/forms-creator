@@ -1,0 +1,9 @@
+<mat-form-field>
+    <mat-label>{{control.label}}</mat-label>
+    <!-- Textarea -->
+    <textarea matInput #textarea (textarea)="onChange($event.target.value)">{{control.label}</textarea> -->
+    <!-- Errors for Textarea-->
+    <mat-error *ngIf="controlDir.control.errors?.required && controlDir.control.touched">Field is required</mat-error>
+
+    {{controlDir.control.errors | json}}
+</mat-form-field>

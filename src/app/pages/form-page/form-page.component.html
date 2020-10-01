@@ -6,6 +6,8 @@
         <mat-grid-tile *ngFor="let control of controls; let i=index ">
             <app-generic-input *ngIf="isInputType(control)" [control]="control" [name]="'input-'+i" ngModel ngDefaultControl>
             </app-generic-input>
+            <app-generic-textarea *ngIf="control.type =='textarea'" [control]="control" [name]="'textarea-'+i" ngModel ngDefaultControl>
+            </app-generic-textarea>
         </mat-grid-tile>
     </mat-grid-list>
 </form>
