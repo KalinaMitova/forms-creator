@@ -68,10 +68,8 @@ export const FormControls = [
         ]
       },
       {
-        type: 'radio-button',
-        validators: [
-          'required',
-        ]
+        type: 'radio button',
+        validators: []
       },
     ],
   },
@@ -90,11 +88,6 @@ export const FormControls = [
         type: 'Cancel',
         color: 'warn'
       },
-      {
-        type: 'Link',
-        color: null,
-        link: null
-      }
     ]
   }
 ]

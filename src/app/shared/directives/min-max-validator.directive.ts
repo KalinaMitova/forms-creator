@@ -6,7 +6,7 @@ import {
 import { Directive, Input } from '@angular/core';
 
 @Directive( {
-  selector: '[appMinMaxValidator]',
+  selector: '[minMaxValidator]',
   providers: [ {
     provide: NG_VALIDATORS,
     useExisting: MinMaxValidatorDirective,
@@ -15,9 +15,10 @@ import { Directive, Input } from '@angular/core';
 } )
 
 export class MinMaxValidatorDirective implements Validator {
-  @Input() appMinMaxValidator: string
+  @Input() minMaxValidator: string
   validate( control: AbstractControl ): { [ key: string ]: any } | null {
-    const controlToCompare = control.parent.get( this.appMinMaxValidator );
+    const controlToCompare = control.parent.get( this.minMaxValidator );
+    console.log( 'appMinMaxValidator' )
     if ( controlToCompare && control.value < controlToCompare.value ) {
       return { 'minGrеaterThanMax': true };
     }

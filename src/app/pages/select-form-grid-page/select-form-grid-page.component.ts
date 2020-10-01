@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { EventService } from '../../shared/services/event.service';
 import { Router } from '@angular/router'
 
 @Component( {
@@ -14,7 +13,6 @@ export class SelectFormGridPageComponent implements OnInit {
 
   constructor (
     private formBuilder: FormBuilder,
-    private eventService: EventService,
     private router: Router,
   ) { }
 
@@ -27,19 +25,13 @@ export class SelectFormGridPageComponent implements OnInit {
     } )
   }
 
-  public hasError = ( controlName: string, errorName: string ) => {
+  public hasError( controlName: string, errorName: string ) {
     return this.gridForm.controls[ controlName ].errors ? this.gridForm.controls[ controlName ].errors[ errorName ] : false;
   }
 
   public onCreate() {
     if ( this.gridForm.valid ) {
-      this.eventService.emit(
-        {
-          name: 'select grid',
-          value: this.gridForm.value
-        }
-      )
-      this.router.navigate( [ 'form-creator', 'select-form-controls' ] );
+      this.router.navigate( [ 'form-creator', 'select-form-controls' ], { state: this.gridForm.value } );
       this.gridForm.reset;
     }
   }

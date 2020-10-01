@@ -1,10 +1,22 @@
-//section {
-// height: 80vh;
-// display: flex;
-// justify-content: center;
-// align-items: center;
-//width: fit-content;
-//}
-mat-grid-tile {
-    background: rgb(115, 78, 163);
+// section {
+//     min-height: 100vh;
+//     //height: 80vh;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: fit-content;
+// }
+.form-creator {
+    display: flex;
+    justify-content: center;
+    form {
+        width: 80%;
+    }
+    .mat-grid-tile {
+        background: rgb(242, 239, 239);
+        overflow: auto;
+    }
+    .mat-form-field-infix {
+        width: auto;
+    }
 }

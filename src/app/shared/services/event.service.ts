@@ -4,9 +4,8 @@ import { filter } from 'rxjs/internal/operators/filter';
 import { map } from 'rxjs/internal/operators/map';
 import { EmitEvent } from "../models/emitEventModel";
 
-@Injectable( {
-  providedIn: 'root'
-} )
+
+@Injectable()
 export class EventService {
 
   private subject$ = new Subject()
@@ -16,9 +15,12 @@ export class EventService {
   }
 
   on( event: string, action: any ): Subscription {
-    return this.subject$.pipe(
+    const suscr = this.subject$.pipe(
       filter( ( e: EmitEvent ) => e.name == event ),
-      map( ( e: EmitEvent ) => e.value ) ).subscribe( action );
+      map( ( e: EmitEvent ) => {
+        console.log( e );
+        return e.value
+      } ) ).subscribe( action );
+    return suscr;
   }
-
 }

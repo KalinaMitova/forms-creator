@@ -7,11 +7,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
-import { EventService } from './shared/services/event.service'
+import { EventService } from './shared/services/event.service';
+
 
 @NgModule( {
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

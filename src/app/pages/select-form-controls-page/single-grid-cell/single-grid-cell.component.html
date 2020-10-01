@@ -1,9 +1,9 @@
-<div [formGroup]="gridCellForm">
+<div [formGroup]="gridCellForm" class="controles-container">
     <!-- Control Label-->
     <mat-form-field appearance="fill">
         <mat-label>Label</mat-label>
-        <input matInput type="text" placeholder="Input label for form control" formControlName="formControlLabel" minlength="5" maxlength="100">
-        <mat-hint align="end">Label must be between 5 and 100 symbols.</mat-hint>
+        <input matInput type="text" placeholder="Input label for form control" formControlName="formControlLabel" minlength="2" maxlength="50">
+        <mat-hint align="end">Label must be between 2 and 50 symbols.</mat-hint>
         <mat-error *ngIf="hasError( 'formControlLabel', 'required') ">Field is required</mat-error>
         <mat-error *ngIf="hasError( 'formControlLabel', 'minLength')">Label must be at least 5 symbols.
         </mat-error>
@@ -53,9 +53,9 @@
             </mat-error>
         </mat-form-field>
         <!-- define values for min length -->
-        <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('maxLength') > -1">
+        <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('minLength') > -1">
             <mat-label>Min length</mat-label>
-            <input matInput type="number" formControlName="validatorMaxLength" required minMaxValidator="validatorMinValue">
+            <input matInput type="number" formControlName="validatorMinLength" required>
             <mat-error *ngIf="hasError( 'validatorMinLength', 'required') ">Field is required</mat-error>
         </mat-form-field>
         <!-- define values for max length -->
@@ -67,7 +67,7 @@
             </mat-error>
         </mat-form-field>
     </div>
-    <!-- define names for select and radio-button controls -->
+    <!-- define names for select and radio-button option -->
     <div *ngIf="this.gridCellForm.value.formControlType == 'Input-select' || this.gridCellForm.value.formControlType == 'Input-multiple Select' ||
       this.gridCellForm.value.formControlType =='Input-radio-button'">
         <div formArrayName="selectOptions">
@@ -88,5 +88,5 @@
         </div>
 
     </div>
-    {{gridCellForm.value | json}}
+    <!-- {{gridCellForm.value | json}} {{gridCellForm.controls}} -->
 </div>

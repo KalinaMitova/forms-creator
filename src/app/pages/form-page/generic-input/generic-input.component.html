@@ -1,0 +1,49 @@
+<!-- <div [formGroup]="SihgleControlForm"> -->
+<mat-form-field>
+    <mat-label>{{control.label}}</mat-label>
+
+    <!-- Input -text, number, email, password, date, color -->
+    <input matInput type="{{control.type}}" placeholder="{{control.label}}" #input (input)="onChange($event.target.value)">
+    <!--Errors for input-->
+
+    <mat-error *ngIf="controlDir.control.errors?.required">Field is required</mat-error>
+    <mat-error *ngIf="controlDir.control.errors?.min">Value must be greater than {{controlDir.control.errors.min.min}}.
+    </mat-error>
+    <mat-error *ngIf="controlDir.control.errors?.max">Value must be less than {{controlDir.control.errors.max.max}}.
+    </mat-error>
+    <mat-error *ngIf="controlDir.control.errors?.maxlength">Text must be {{controlDir.control.errors.maxlength.requiredLength}} symbols at least.
+    </mat-error>
+    <mat-error *ngIf="controlDir.control.errors?.minlength">Text must not be more than {{controlDir.control.errors.minlength.requiredLength}} symbols.
+    </mat-error>
+    {{controlDir.control.errors | json}}
+
+    <!-- Textarea -->
+    <!-- <textarea matInput *ngIf="formControl.type=='textarea'" type="{{formControl.type}}" #textarea (textarea)="onChange($event.target.value)" [minLength]="hasValidator('minLength')" [maxLength]="hasValidator('maxLength')" [required]="hasValidator('maxLength')">{{formControl.label}</textarea> -->
+    <!-- Errors for Textarea-->
+    <!-- <mat-error *ngIf="textarea.errors?.required">Field is required</mat-error>
+    <mat-error *ngIf="textarea.errors?.maxLength">Text must be {{formControl.validators['maxLength']}} symbols at least.
+    </mat-error>
+    <mat-error *ngIf="textarea.errors?.minLength">Text must not be more than {{formControl.validators['minLength']}} symbols.
+    </mat-error> -->
+
+    <!-- Form Comtrol Input type select -->
+    <!-- <mat-select [multiple]="formControl.type.indexOf('multiple')>-1" #select (select)="onChange($event.target.value)" [required]="hasValidator('required')">
+        <mat-option *ngFor="let option of formControl.selectOptions;let i = index" [value]="i">
+            {{option}}
+        </mat-option>
+    </mat-select> -->
+    <!-- Error for select-->
+    <!-- <mat-error *ngIf="select.errors?.required">Field is required</mat-error> -->
+
+    <!-- Form Comtrol Input type radio-button -->
+    <!-- <mat-radio-group #radioButton (radioButton)="onChange($event.target.value)">
+        <mat-radio-button *ngFor="let option of formControl.selectOptions;let i = index" [value]="option">{{option}}
+        </mat-radio-button>
+    </mat-radio-group>-->
+
+</mat-form-field>
+<!-- <div mat-dialog-actions align="end" *ngIf="isButtonType">
+    <button mat-raised-button [type]="formControl.type =='Submit' ? 'submit': null" [color]="formControl.color ? formControl.color : null">{{formControl.label}}</button>
+    </div> -->
+
+<!-- </div> -->

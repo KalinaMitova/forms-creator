@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { FormControls } from '../../../shared/models/FormControls';
@@ -9,6 +9,9 @@ import { FormControls } from '../../../shared/models/FormControls';
   styleUrls: [ './single-grid-cell.component.scss' ]
 } )
 export class SingleGridCellComponent implements OnInit, OnDestroy {
+  @Output()
+  private gridCellFormReady: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  private form: FormGroup;
   gridCellForm: FormGroup;
   formControls = FormControls;
   private onChangesSubs: Subscription;
@@ -18,36 +21,38 @@ export class SingleGridCellComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.gridCellForm = this.formBuilder.group( {
-      formControlLabel: [ null, [ Validators.required, Validators.minLength( 5 ), Validators.maxLength( 100 ) ] ],
+      formControlLabel: [ null, [ Validators.required, Validators.minLength( 2 ), Validators.maxLength( 50 ) ] ],
       formControlType: [ null, Validators.required ],
       validators: [ null ],
-      validatorMinValue: [ 0, [ Validators.required ] ],
-      validatorMaxValue: [ 0, [ Validators.required ] ],
-      validatorMinLength: [ 0, [ Validators.required ] ],
-      validatorMaxLength: [ 0, [ Validators.required ] ],
+      validatorMinValue: [ null ],
+      validatorMaxValue: [ null ],
+      validatorMinLength: [ null ],
+      validatorMaxLength: [ null ],
       selectOptions: this.formBuilder.array( [
-        this.formBuilder.control( '', [ Validators.required ] ),
-        this.formBuilder.control( '', [ Validators.required ] ),
+        this.formBuilder.control( '', ),
+        this.formBuilder.control( '', ),
       ] )
     } );
     this.onChanges();
+    this.gridCellFormReady.emit( this.gridCellForm );
   }
   get selectOptions() {
     return this.gridCellForm.get( 'selectOptions' ) as FormArray;
   }
   get validators() { return this.gridCellForm.get( 'validators' ) };
-  get validatorMinValue() { return this.gridCellForm.get( 'validators' ) };
-  get validatorMaxValue() { return this.gridCellForm.get( 'validators' ) };
-  get validatorMinLength() { return this.gridCellForm.get( 'validators' ) };
-  get validatorMaxLength() { return this.gridCellForm.get( 'validators' ) };
+  get validatorMinValue() { return this.gridCellForm.get( 'validatorMinValue' ) };
+  get validatorMaxValue() { return this.gridCellForm.get( 'validatorMaxValue' ) };
+  get validatorMinLength() { return this.gridCellForm.get( 'validatorMinLength' ) };
+  get validatorMaxLength() { return this.gridCellForm.get( 'validatorMaxLength' ) };
+  get formControlType() { return this.gridCellForm.get( 'formControlType' ) };
 
   onChanges(): void {
-    this.onChangesSubs = this.gridCellForm.get( 'formControlType' ).valueChanges.subscribe( formControl => {
+    this.onChangesSubs = this.formControlType.valueChanges.subscribe( formControl => {
       this.validators.setValue( null );
-      this.validatorMinValue.setValue( 0 );
-      this.validatorMaxValue.setValue( 0 );
-      this.validatorMinLength.setValue( 0 );
-      this.validatorMaxLength.setValue( 0 );
+      this.validatorMinValue.setValue( null );
+      this.validatorMaxValue.setValue( null );
+      this.validatorMinLength.setValue( null );
+      this.validatorMaxLength.setValue( null );
     } );
 
   }
@@ -68,24 +73,25 @@ export class SingleGridCellComponent implements OnInit, OnDestroy {
     return inputTypes.find( fc => fc[ 'type' ] === this.gridCellForm.value.formControlType.substring( 6 ) )[ 'validators' ];
   }
   selected( event ) {
+
     const validatorsArray = event.value;
     if ( validatorsArray.indexOf( 'min' ) < 0 ) {
-      this.validatorMinValue.setValue( 0 );
+      this.validatorMinValue.setValue( null );
     }
     if ( validatorsArray.indexOf( 'max' ) < 0 ) {
-      this.validatorMaxValue.setValue( 0 );
+      this.validatorMaxValue.setValue( null );
     }
     if ( validatorsArray.indexOf( 'minLength' ) < 0 ) {
-      this.validatorMinLength.setValue( 0 );
+      this.validatorMinLength.setValue( null );
     }
     if ( validatorsArray.indexOf( 'maxLength' ) < 0 ) {
-      this.validatorMaxLength.setValue( 0 );
+      this.validatorMaxLength.setValue( null );
     }
   }
 
   addOption() {
-    this.selectOptions.push( this.formBuilder.control( '', [ Validators.required ] ) );
-    console.log( this.selectOptions.controls )
+    this.selectOptions.push( this.formBuilder.control( '', ) );
+    console.log( this.gridCellForm.controls );
   }
 
   deleteOption( index: number ) {
