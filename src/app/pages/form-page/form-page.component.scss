@@ -1,3 +1,36 @@
 .mat-radio-button~.mat-radio-button {
     margin-left: 16px;
 }
+
+section {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card {
+    width: 50%;
+    align-self: center;
+}
+
+mat-card-title {
+    text-align: center;
+}
+
+mat-form-field {
+    // width: 80%;
+    align-self: start;
+}
+
+// .mat-grid-tile {
+//     justify-content: left;
+//     padding: 10 px;
+//     height: 100px;
+//     flex-grow: 1;
+//     overflow: auto;
+// }
+// .mat-grid-list {
+//     flex-grow: 1;
+//     overflow: auto;
+// }

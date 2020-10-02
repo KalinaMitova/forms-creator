@@ -90,8 +90,7 @@ export class SingleGridCellComponent implements OnInit, OnDestroy {
   }
 
   addOption() {
-    this.selectOptions.push( this.formBuilder.control( '', ) );
-    console.log( this.gridCellForm.controls );
+    this.selectOptions.push( this.formBuilder.control( '' ) );
   }
 
   deleteOption( index: number ) {

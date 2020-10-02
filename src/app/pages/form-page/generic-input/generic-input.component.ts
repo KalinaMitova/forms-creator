@@ -38,7 +38,6 @@ export class GenericInputComponent implements OnInit, ControlValueAccessor {
     if ( this.controlDir ) {
       this.controlDir.valueAccessor = this;
     }
-    console.log( this.controlDir );
   }
 
   ngOnInit() {
@@ -62,7 +61,6 @@ export class GenericInputComponent implements OnInit, ControlValueAccessor {
     }
     fcontrol.setValidators( validators );
     fcontrol.updateValueAndValidity();
-    console.log( fcontrol );
   }
   writeValue( obj: any ): void {
     this.input.nativeElement.value = obj;

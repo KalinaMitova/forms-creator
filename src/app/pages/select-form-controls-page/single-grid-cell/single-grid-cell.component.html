@@ -1,99 +1,96 @@
-<mat-card class="mat-elevation-z4">
+<mat-card [formGroup]="gridCellForm" class="mat-elevation-z4">
     <mat-card-content>
-        <div [formGroup]="gridCellForm" class="controles-container">
-            <!-- Control Label-->
-            <mat-form-field appearance="fill">
-                <mat-label>Label</mat-label>
-                <input matInput type="text" placeholder="Input label for form control" formControlName="formControlLabel" minlength="2" maxlength="50">
-                <mat-hint align="end">Label must be between 2 and 50 symbols.</mat-hint>
-                <mat-error *ngIf="hasError( 'formControlLabel', 'required') ">Field is required</mat-error>
-                <mat-error *ngIf="hasError( 'formControlLabel', 'minLength')">Label must be at least 5 symbols.
-                </mat-error>
-                <mat-error *ngIf="hasError( 'formControlLabel', 'maxLength')">Label must be less than 100 symbols.
-                </mat-error>
-            </mat-form-field>
+        <!-- Control Label-->
+        <mat-form-field appearance="fill">
+            <mat-label>Label</mat-label>
+            <input matInput type="text" placeholder="Input label for form control" formControlName="formControlLabel" minlength="2" maxlength="50">
+            <mat-hint align="end">Label must be between 2 and 50 symbols.</mat-hint>
+            <mat-error *ngIf="hasError('formControlLabel', 'required') ">Field is required</mat-error>
+            <mat-error *ngIf="hasError('formControlLabel', 'minLength')">Label must be at least 5 symbols.
+            </mat-error>
+            <mat-error *ngIf="hasError('formControlLabel', 'maxLength')">Label must be less than 100 symbols.
+            </mat-error>
+        </mat-form-field>
 
-            <!-- Select form control type-->
-            <mat-form-field appearance="fill">
-                <mat-label>Form control type</mat-label>
-                <mat-select formControlName="formControlType" required>
-                    <mat-optgroup *ngFor="let group of formControls" [label]="group.name" [disabled]="group.disabled">
-                        <mat-option *ngFor="let formControl of group.types" [value]="group.name + '-' +formControl.type">
-                            {{formControl.type}}
-                        </mat-option>
-                    </mat-optgroup>
-                </mat-select>
-                <mat-error *ngIf="hasError( 'formControlType', 'required') ">Field is required</mat-error>
-            </mat-form-field>
-
-            <!-- Select validators for input form controls -->
-            <mat-form-field appearance="fill" *ngIf="gridCellForm.value.formControlType?.includes('Input') && gridCellForm.value.formControlType !=
-      'Input-radio button' && gridCellForm.value.formControlType  != 'Input-select'">
-                <mat-label>Select validators</mat-label>
-                <mat-select formControlName="validators" multiple (selectionChange)="selected($event)">
-                    <mat-option *ngFor="let validator of getAvailableValidatorsForFormControl()" [value]="validator">
-                        {{validator}}
+        <!-- Select form control type-->
+        <mat-form-field appearance="fill">
+            <mat-label>Form control type</mat-label>
+            <mat-select formControlName="formControlType" required>
+                <mat-optgroup *ngFor="let group of formControls" [label]="group.name" [disabled]="group.disabled">
+                    <mat-option *ngFor="let formControl of group.types" [value]="group.name + '-' +formControl.type">
+                        {{formControl.type}}
                     </mat-option>
-                </mat-select>
-            </mat-form-field>
+                </mat-optgroup>
+            </mat-select>
+            <mat-error *ngIf="hasError('formControlType', 'required') ">Field is required</mat-error>
+        </mat-form-field>
 
-            <!-- define values for the validators -->
-            <div *ngIf="gridCellForm.value.validators && ((gridCellForm.value.validators.length > 1) ||
+        <!-- Select validators for input form controls -->
+        <mat-form-field appearance="fill" *ngIf="gridCellForm.value.formControlType?.includes('Input') && gridCellForm.value.formControlType !=
+      'Input-radio button' && gridCellForm.value.formControlType  != 'Input-select'">
+            <mat-label>Select validators</mat-label>
+            <mat-select formControlName="validators" multiple (selectionChange)="selected($event)">
+                <mat-option *ngFor="let validator of getAvailableValidatorsForFormControl()" [value]="validator">
+                    {{validator}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- define values for the validators -->
+        <div *ngIf="gridCellForm.value.validators && ((gridCellForm.value.validators.length > 1) ||
       (gridCellForm.value.validators.length > 0) && gridCellForm.value.validators.indexOf('required') == -1)">
-                <p>Define values for the validators</p>
-                <!-- define values for min value -->
-                <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('min') > -1">
-                    <mat-label>Min value</mat-label>
-                    <input matInput type="number" formControlName="validatorMinValue" required>
-                    <mat-error *ngIf="hasError( 'validatorMinValue', 'required') ">Field is required</mat-error>
-                </mat-form-field>
-                <!-- define values for max value -->
-                <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('max') > -1">
-                    <mat-label>Max value</mat-label>
-                    <input matInput type="number" formControlName="validatorMaxValue" required minMaxValidator="validatorMinValue">
-                    <mat-error *ngIf="hasError( 'validatorMaxValue', 'required') ">Field is required</mat-error>
-                    <mat-error *ngIf="hasError( 'validatorMaxValue', 'minGrеaterThanMax') ">Max value must greater than min value
-                    </mat-error>
-                </mat-form-field>
-                <!-- define values for min length -->
-                <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('minLength') > -1">
-                    <mat-label>Min length</mat-label>
-                    <input matInput type="number" formControlName="validatorMinLength" required>
-                    <mat-error *ngIf="hasError( 'validatorMinLength', 'required') ">Field is required</mat-error>
-                </mat-form-field>
-                <!-- define values for max length -->
-                <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('maxLength') > -1">
-                    <mat-label>Max length</mat-label>
-                    <input matInput type="number" formControlName="validatorMaxLength" required minMaxValidator="validatorMinLength">
-                    <mat-error *ngIf="hasError( 'validatorMaxLength', 'required') ">Field is required</mat-error>
-                    <mat-error *ngIf="hasError( 'validatorMaxLength', 'minGrеaterThanMax') ">Max value must greater than min value
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <!-- define names for select and radio-button option -->
-            <div *ngIf="this.gridCellForm.value.formControlType == 'Input-select' || this.gridCellForm.value.formControlType == 'Input-multiple select' ||
-      this.gridCellForm.value.formControlType =='Input-radio button'">
-                <div formArrayName="selectOptions">
-                    <h3>Select Options</h3>
-                    <div *ngFor="let option of selectOptions.controls; let i=index">
-                        <mat-form-field appearance="fill">
-                            <mat-label>Option {{i+1}}</mat-label>
-                            <input matInput type="text" formControlName="{{i}}" required>
-                            <button mat-button mat-icon-button matSuffix (click)="deleteOption(i)" *ngIf="i > 1">
-                <mat-icon aria-label="delete icon">delete</mat-icon>
-              </button>
-                            <mat-error *ngIf="selectOptions.controls[i]?.errors?.required">
-                                Field is required
-                            </mat-error>
-                        </mat-form-field>
-                    </div>
-                    <div mat-dialog-actions align="start">
-                        <button mat-raised-button color="primary" (click)="addOption()">Add option</button>
-                    </div>
-                </div>
-
-            </div>
-            <!-- {{gridCellForm.value | json}} {{gridCellForm.controls}} -->
+            <p>Define values for the validators</p>
+            <!-- define values for min value -->
+            <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('min') > -1">
+                <mat-label>Min value</mat-label>
+                <input matInput type="number" formControlName="validatorMinValue" required>
+                <mat-error *ngIf="hasError('validatorMinValue', 'required') ">Field is required</mat-error>
+            </mat-form-field>
+            <!-- define values for max value -->
+            <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('max') > -1">
+                <mat-label>Max value</mat-label>
+                <input matInput type="number" formControlName="validatorMaxValue" required minMaxValidator="validatorMinValue">
+                <mat-error *ngIf="hasError('validatorMaxValue', 'required') ">Field is required</mat-error>
+                <mat-error *ngIf="hasError('validatorMaxValue', 'minGrеaterThanMax')">Max value must greater than min value
+                </mat-error>
+            </mat-form-field>
+            <!-- define values for min length -->
+            <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('minLength') > -1">
+                <mat-label>Min length</mat-label>
+                <input matInput type="number" formControlName="validatorMinLength" required>
+                <mat-error *ngIf="hasError('validatorMinLength', 'required') ">Field is required</mat-error>
+            </mat-form-field>
+            <!-- define values for max length -->
+            <mat-form-field appearance="fill" *ngIf="gridCellForm.value.validators.indexOf('maxLength') > -1">
+                <mat-label>Max length</mat-label>
+                <input matInput type="number" formControlName="validatorMaxLength" required minMaxValidator="validatorMinLength">
+                <mat-error *ngIf="hasError('validatorMaxLength', 'required') ">Field is required</mat-error>
+                <mat-error *ngIf="hasError('validatorMaxLength', 'minGrеaterThanMax') ">Max value must greater than min value
+                </mat-error>
+            </mat-form-field>
         </div>
+        <!-- define names for select and radio-button option -->
+        <div *ngIf="this.gridCellForm.value.formControlType == 'Input-select' || this.gridCellForm.value.formControlType == 'Input-multiple select' ||
+      this.gridCellForm.value.formControlType =='Input-radio button'">
+            <div formArrayName="selectOptions">
+                <h3>Select Options</h3>
+                <div *ngFor="let option of selectOptions.controls; let i=index">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Option {{i+1}}</mat-label>
+                        <input matInput type="text" formControlName="{{i}}" required>
+                        <button mat-button mat-icon-button matSuffix (click)="deleteOption(i)" *ngIf="i > 1">
+              <mat-icon aria-label="delete icon">delete</mat-icon>
+            </button>
+                        <mat-error *ngIf="selectOptions.controls[i]?.errors?.required">
+                            Field is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div mat-dialog-actions align="start">
+                    <button mat-raised-button color="primary" (click)="addOption()">Add option</button>
+                </div>
+            </div>
+        </div>
+        <!-- {{gridCellForm.value | json}} {{gridCellForm.controls}} -->
     </mat-card-content>
 </mat-card>

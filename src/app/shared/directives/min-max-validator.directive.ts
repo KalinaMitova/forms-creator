@@ -18,7 +18,6 @@ export class MinMaxValidatorDirective implements Validator {
   @Input() minMaxValidator: string
   validate( control: AbstractControl ): { [ key: string ]: any } | null {
     const controlToCompare = control.parent.get( this.minMaxValidator );
-    console.log( 'appMinMaxValidator' )
     if ( controlToCompare && control.value < controlToCompare.value ) {
       return { 'minGrеaterThanMax': true };
     }

@@ -18,7 +18,6 @@ export class EventService {
     const suscr = this.subject$.pipe(
       filter( ( e: EmitEvent ) => e.name == event ),
       map( ( e: EmitEvent ) => {
-        console.log( e );
         return e.value
       } ) ).subscribe( action );
     return suscr;

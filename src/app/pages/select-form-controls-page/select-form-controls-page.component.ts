@@ -16,15 +16,14 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
   gridElNumber: Number;
   private pageLoaded: boolean = false;
   private gridSubsc: Subscription;
+  counter: number = 1;
 
   constructor (
     private formBuilder: FormBuilder,
     private router: Router
   ) {
     this.gridParams = this.router.getCurrentNavigation().extras.state;
-    console.log( this.gridParams );
     this.gridElNumber = this.gridParams[ 'rowsNumber' ] * this.gridParams[ 'colsNumber' ];
-    console.log( this.gridElNumber );
   }
 
   ngOnInit(): void {
@@ -36,7 +35,7 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
   }
 
   isFormValid(): boolean {
-    return this.pageLoaded ? this.formControlsForm.valid : false
+    return this.pageLoaded ? this.formControlsForm.valid : true
   }
   ngOnDestroy(): void {
     if ( this.gridSubsc ) {
@@ -45,16 +44,13 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
   }
   addFormControl( name: string, formGroup: FormGroup ): void {
     this.formControlsForm.addControl( name, formGroup );
+    this.counter++;
   }
-  setFormGroupName( index: number ): string {
-    return `fromControl-${index + 1}`;
+  setFormGroupName(): string {
+    return `formControl-${this.counter}`;
   }
   onCreateForm() {
     if ( this.formControlsForm.valid ) {
-      // this.eventService.emit( {
-      //   name: 'formControlsSelected',
-      //   value: this.formControlsForm.value
-      // } )
       const payload = this.formControlsForm.value;
       payload.grid = {
         cols: this.gridParams.colsNumber,
@@ -62,7 +58,6 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
         rowHeight: this.gridParams.rowsHeight,
         colWidth: this.gridParams.colsWidth
       }
-
       this.router.navigate( [ 'form-creator', 'form' ], { state: payload } );
       this.formControlsForm.reset;
     }

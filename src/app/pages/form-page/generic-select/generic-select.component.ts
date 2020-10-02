@@ -16,7 +16,6 @@ export class GenericSelectComponent implements OnInit {
     if ( this.controlDir ) {
       this.controlDir.valueAccessor = this;
     }
-    console.log( this.controlDir );
   }
 
   ngOnInit() {
@@ -28,7 +27,6 @@ export class GenericSelectComponent implements OnInit {
     }
     fcontrol.setValidators( validators );
     fcontrol.updateValueAndValidity();
-    console.log( fcontrol );
   }
   writeValue( obj: any ): void {
     this.select.nativeElement.value = obj;

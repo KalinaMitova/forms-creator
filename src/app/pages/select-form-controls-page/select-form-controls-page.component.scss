@@ -27,9 +27,37 @@
     padding: 16px;
     align-content: center;
     ;
+    margin-bottom: 100px;
 }
 
 mat-card-title {
     text-align: center;
     padding-bottom: 15px;
 }
+
+mat-grid-tile {
+    min-height: height 100px;
+    ;
+}
+
+.controles-container {
+    width: 240px;
+    float: left;
+    margin: 10px;
+}
+
+.buttons-container {
+    float: right;
+    margin: 10px;
+}
+
+// .column {
+//   float: left;
+//   width: 50%;
+// }
+// /* Clear floats after the columns */
+// .container:after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
