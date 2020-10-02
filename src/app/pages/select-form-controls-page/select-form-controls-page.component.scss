@@ -46,10 +46,12 @@ mat-grid-tile {
     margin: 10px;
 }
 
-// .buttons-container {
-//     float: right;
-//     margin: 10px;
-// }
+.bottomright {
+    position: fixed;
+    top: 100px;
+    right: 10px;
+}
+
 // .column {
 //   float: left;
 //   width: 50%;
