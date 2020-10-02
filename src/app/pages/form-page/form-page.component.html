@@ -5,6 +5,7 @@
             <mat-card-content>
                 <mat-grid-list [cols]='gridParams.colsNumber' [rowHeight]=" gridParams.rowsHeight ">
                     <mat-grid-tile *ngFor="let control of controls; let i=index">
+                        {{control| json}}
                         <app-generic-input *ngIf="isInputType(control)" [control]="control" [name]="'input-'+i" ngModel ngDefaultControl>
                         </app-generic-input>
                         <app-generic-textarea *ngIf="control.type =='textarea'" [control]="control" [name]="'textarea-'+i" ngModel ngDefaultControl>

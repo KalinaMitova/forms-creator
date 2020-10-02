@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 const inputTypes = [
-  'text', 'number', 'date', 'email', 'password', 'çolor' ];
+  'text', 'number', 'date', 'email', 'password', 'color' ];
 const buttonTypes = [ 'Cancel', 'Submit', 'Basic' ];
 
 @Component( {

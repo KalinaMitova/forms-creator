@@ -13,9 +13,9 @@
     </mat-error>
     <mat-error *ngIf="controlDir.control.errors?.maxlength">Text must be {{controlDir.control.errors.maxlength.requiredLength}} symbols at least.
     </mat-error>
-    <mat-error *ngIf="controlDir.control.errors?.minlength">Text must not be more than {{controlDir.control.errors.minlength.requiredLength}} symbols.
+    <mat-error *ngIf="controlDir.control.errors?.minlength != null">Text must not be more than {{controlDir.control.errors.minlength.requiredLength}} symbols.
     </mat-error>
-    {{controlDir.control.errors | json}}
+    errors: {{controlDir.control.errors | json}}
 </mat-form-field>
 
 <!-- </div> -->
