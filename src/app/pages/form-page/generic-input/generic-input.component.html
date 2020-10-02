@@ -16,27 +16,6 @@
     <mat-error *ngIf="controlDir.control.errors?.minlength">Text must not be more than {{controlDir.control.errors.minlength.requiredLength}} symbols.
     </mat-error>
     {{controlDir.control.errors | json}}
-
-
-
-    <!-- Form Comtrol Input type select -->
-    <!-- <mat-select [multiple]="formControl.type.indexOf('multiple')>-1" #select (select)="onChange($event.target.value)" [required]="hasValidator('required')">
-        <mat-option *ngFor="let option of formControl.selectOptions;let i = index" [value]="i">
-            {{option}}
-        </mat-option>
-    </mat-select> -->
-    <!-- Error for select-->
-    <!-- <mat-error *ngIf="select.errors?.required">Field is required</mat-error> -->
-
-    <!-- Form Comtrol Input type radio-button -->
-    <!-- <mat-radio-group #radioButton (radioButton)="onChange($event.target.value)">
-        <mat-radio-button *ngFor="let option of formControl.selectOptions;let i = index" [value]="option">{{option}}
-        </mat-radio-button>
-    </mat-radio-group>-->
-
 </mat-form-field>
-<!-- <div mat-dialog-actions align="end" *ngIf="isButtonType">
-    <button mat-raised-button [type]="formControl.type =='Submit' ? 'submit': null" [color]="formControl.color ? formControl.color : null">{{formControl.label}}</button>
-    </div> -->
 
 <!-- </div> -->

@@ -3,13 +3,13 @@ import { NgControl, ValidatorFn, Validators } from '@angular/forms';
 import { FormControlModel } from 'src/app/shared/models/FormControlModel';
 
 @Component( {
-  selector: 'app-generic-textarea',
-  templateUrl: './generic-textarea.component.html',
-  styleUrls: [ './generic-textarea.component.scss' ]
+  selector: 'app-generic-select',
+  templateUrl: './generic-select.component.html',
+  styleUrls: [ './generic-select.component.scss' ]
 } )
-export class GenericTextareaComponent implements OnInit {
+export class GenericSelectComponent implements OnInit {
   @Input() control: FormControlModel;
-  @ViewChild( 'textarea' ) textarea: ElementRef;
+  @ViewChild( 'select' ) select: ElementRef;
   disabled;
 
   constructor ( @Self() public controlDir: NgControl ) {
@@ -31,7 +31,7 @@ export class GenericTextareaComponent implements OnInit {
     console.log( fcontrol );
   }
   writeValue( obj: any ): void {
-    this.textarea.nativeElement.value = obj;
+    this.select.nativeElement.value = obj;
   }
   registerOnChange( fn: any ): void {
     this.onChange = fn;

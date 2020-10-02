@@ -1,22 +1,35 @@
-// section {
-//     min-height: 100vh;
-//     //height: 80vh;
+// .container {
+//     position: relative;
+//     /* needed for footer positioning*/
+//     height: auto !important;
+//     /* real browsers */
+//     min-height: 100%;
+//     /* real browsers */
+// }
+// .form-header {
+//     display: inline-flexbox;
+// }
+// .form-creator {
 //     display: flex;
 //     justify-content: center;
-//     align-items: center;
-//     width: fit-content;
+//     form {
+//         width: 80%;
+//     }
+//     .mat-grid-tile {
+//         background: rgb(242, 239, 239);
+//         overflow: auto;
+//     }
+//     .mat-form-field-infix {
+//         width: auto;
+//     }
 // }
-.form-creator {
-    display: flex;
-    justify-content: center;
-    form {
-        width: 80%;
-    }
-    .mat-grid-tile {
-        background: rgb(242, 239, 239);
-        overflow: auto;
-    }
-    .mat-form-field-infix {
-        width: auto;
-    }
+.content {
+    padding: 16px;
+    align-content: center;
+    ;
+}
+
+mat-card-title {
+    text-align: center;
+    padding-bottom: 15px;
 }

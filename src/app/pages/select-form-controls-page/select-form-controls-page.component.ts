@@ -3,9 +3,6 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { GridModel } from 'src/app/shared/models/GridModel';
-import { EventService } from '../../shared/services/event.service';
-
 
 @Component( {
   selector: 'app-select-form-controls-page',
@@ -20,10 +17,8 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
   private pageLoaded: boolean = false;
   private gridSubsc: Subscription;
 
-
   constructor (
     private formBuilder: FormBuilder,
-    private eventService: EventService,
     private router: Router
   ) {
     this.gridParams = this.router.getCurrentNavigation().extras.state;
@@ -32,11 +27,8 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
     console.log( this.gridElNumber );
   }
 
-
-
   ngOnInit(): void {
     this.formControlsForm = this.formBuilder.group( {} );
-
   }
 
   ngAfterViewInit() {
@@ -79,6 +71,4 @@ export class SelectFormControlsPageComponent implements OnInit, OnDestroy, After
     this.router.navigate( [ 'form-creator', 'select-form-grid' ] );
     this.formControlsForm.reset;
   }
-
-
 }

@@ -7,10 +7,15 @@ mat-toolbar h1 {
 }
 
 footer {
-    background-color: rgb(142, 128, 240);
+    // background-color: rgb(142, 128, 240);
     border-top: 1px solid #bbb;
     border-bottom: 1px solid #bbb;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    /* stick to bottom */
+    background-color: rgb(142, 128, 240);
 }

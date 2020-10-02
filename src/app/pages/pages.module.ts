@@ -11,6 +11,9 @@ import { FormPageComponent } from './form-page/form-page.component';
 import { SingleGridCellComponent } from './select-form-controls-page/single-grid-cell/single-grid-cell.component';
 import { GenericInputComponent, inputValidator } from './form-page/generic-input/generic-input.component';
 import { GenericTextareaComponent } from './form-page/generic-textarea/generic-textarea.component';
+import { GenericSelectComponent } from './form-page/generic-select/generic-select.component';
+import { GenericRadioButtonComponent } from './form-page/generic-radio-button/generic-radio-button.component';
+import { GenericButtonComponent } from './form-page/generic-button/generic-button.component';
 
 
 
@@ -22,6 +25,9 @@ import { GenericTextareaComponent } from './form-page/generic-textarea/generic-t
     SingleGridCellComponent,
     GenericInputComponent,
     GenericTextareaComponent,
+    GenericSelectComponent,
+    GenericRadioButtonComponent,
+    GenericButtonComponent,
   ],
   imports: [
     CommonModule,

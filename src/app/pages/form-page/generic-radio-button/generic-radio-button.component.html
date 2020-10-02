@@ -1,0 +1,8 @@
+<!-- <mat-form-field> -->
+<mat-label>{{control.label}}</mat-label>
+<!-- Form Comtrol Input type radio-button -->
+<mat-radio-group #radioButton (radioButton)="onChange($event.target.value)">
+    <mat-radio-button *ngFor="let option of control.selectOptions;let i = index" [value]="option">{{option}}
+    </mat-radio-button>
+</mat-radio-group>
+<!-- </mat-form-field> -->

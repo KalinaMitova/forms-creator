@@ -1,17 +1,40 @@
-<section>
+<!-- <section class="container">
     <div class='form-creator'>
-        <form [formGroup]="formControlsForm" (ngSubmit)="onCreateForm()">
-            <mat-grid-list [cols]='gridParams.colsNumber' rowHeight="200">
-                <mat-grid-tile *ngFor="let item of [].constructor(gridElNumber); let i = index">
-                    <app-single-grid-cell (gridCellFormReady)="addFormControl(setFormGroupName(i), $event)">
-                    </app-single-grid-cell>
-                </mat-grid-tile>
+        <div class='form-header'>
+            <h1>Select field's type for your form</h1>
+        </div>
+        <div>
+            <form [formGroup]="formControlsForm" (ngSubmit)="onCreateForm()">
+                <mat-grid-list [cols]='gridParams.colsNumber' rowHeight="200">
+                    <mat-grid-tile *ngFor="let item of [].constructor(gridElNumber); let i = index">
+                        <app-single-grid-cell (gridCellFormReady)="addFormControl(setFormGroupName(i), $event)">
+                        </app-single-grid-cell>
+                    </mat-grid-tile>
 
-            </mat-grid-list>
-            <div mat-dialog-actions align="end">
-                <button mat-raised-button color="primary" [disabled]="!isFormValid()">Create form</button>
-                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
-            </div>
-        </form>
+                </mat-grid-list>
+                <div mat-dialog-actions align="end">
+                    <button mat-raised-button color="primary" [disabled]="!isFormValid()">Create form</button>
+                    <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
-</section>
+</section> -->
+
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px" grid>
+    <mat-card-title>Select form controls for your form</mat-card-title>
+    <form [formGroup]="formControlsForm" (ngSubmit)="onCreateForm() ">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let item of [].constructor(gridElNumber); let i=i ndex">
+            <!-- <mat-grid-list [cols]='gridParams.colsNumber' rowHeight=" 200 " gutterSize=" 20px ">
+      <mat-grid-tile *ngFor=" let item of [].constructor(gridElNumber); let i=i ndex ">-->
+            <app-single-grid-cell (gridCellFormReady)="addFormControl(setFormGroupName(i), $event) ">
+            </app-single-grid-cell>
+            <!-- </mat-grid-tile>
+        </mat-grid-list> -->
+        </div>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button color="primary" [disabled]="!isFormValid() ">Create form</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>

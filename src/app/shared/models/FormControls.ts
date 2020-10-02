@@ -60,7 +60,7 @@ export const FormControls = [
         ]
       },
       {
-        type: 'multiple Select',
+        type: 'multiple select',
         validators: [
           'required',
         ]

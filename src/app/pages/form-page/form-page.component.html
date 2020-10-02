@@ -1,16 +1,21 @@
 <!-- <section fxLayout="row wrap" fxLayoutAlign="center center"> -->
 
 <form #form="ngForm" (ngSubmit)="onSubmit()">
-    {{form.value | json}} {{controls | json}}
     <mat-grid-list cols='2' rowHeight=" 1:3 ">
         <mat-grid-tile *ngFor="let control of controls; let i=index ">
             <app-generic-input *ngIf="isInputType(control)" [control]="control" [name]="'input-'+i" ngModel ngDefaultControl>
             </app-generic-input>
             <app-generic-textarea *ngIf="control.type =='textarea'" [control]="control" [name]="'textarea-'+i" ngModel ngDefaultControl>
             </app-generic-textarea>
+            <app-generic-select *ngIf="control.type.indexOf('select') >-1" [control]="control" [name]="'select-'+i" ngModel ngDefaultControl>
+            </app-generic-select>
+            <app-generic-radio-button *ngIf="control.type =='radio button'" [control]="control" [name]="'radio-button-'+i" ngModel ngDefaultControl>
+            </app-generic-radio-button>
+            <app-generic-button *ngIf="isButtonType(control)" [control]="control" [name]="'button-'+i" [attr.disabledButton]='form.invalid' ngModel ngDefaultControl>
+            </app-generic-button>
         </mat-grid-tile>
     </mat-grid-list>
 </form>
-<!-- [control]="control" name="input" ngModel ngDefaultControl -->
+
 <!-- </section> -->
 <!--  -->

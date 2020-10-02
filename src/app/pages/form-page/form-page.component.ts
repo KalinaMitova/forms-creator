@@ -31,7 +31,7 @@ export class FormPageComponent implements OnInit, OnDestroy {
 
     this.controls = Object.keys( payload ).map( function ( index ) {
       let fc = payload[ index ];
-      console.log( fc );
+
       const control: FormControlModel = {
         label: fc.formControlLabel,
         type: fc.formControlType.split( '-' )[ 1 ],
@@ -41,7 +41,7 @@ export class FormPageComponent implements OnInit, OnDestroy {
         validatorMinLength: fc.validatorMinLength,
         validatorMinValue: fc.validatorMinValue,
         validators: fc.validators,
-        color: fc.formControlType.split( '-' )[ 1 ] == 'Button' ? this.getButtonColor( fc.formControlType.split( '-' )[ 1 ] ) : null
+        color: null
       }
       console.log( control );
       return control;
@@ -68,13 +68,7 @@ export class FormPageComponent implements OnInit, OnDestroy {
   isButtonType( fcontrol: FormControlModel ): boolean {
     return buttonTypes.includes( fcontrol.type );
   }
-  private getButtonColor( ButtonType ) {
-    switch ( ButtonType ) {
-      case 'Submit': return 'primary';
-      case 'Cancel': return 'warn';
-      default: return null
-    }
-  }
+
 
   ngOnDestroy(): void {
     if ( this.formControlsSubsc ) {

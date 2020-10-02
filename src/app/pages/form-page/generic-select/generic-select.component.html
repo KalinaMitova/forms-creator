@@ -1,0 +1,11 @@
+<mat-form-field>
+    <mat-label>{{control.label}}</mat-label>
+    <!-- Form Comtrol Input type select -->
+    <mat-select [multiple]="control.type.indexOf('multiple')>-1" #select (select)="onChange($event.target.value)">
+        <mat-option *ngFor="let option of control.selectOptions;let i = index" [value]="i">
+            {{option}}
+        </mat-option>
+    </mat-select>
+    <!-- Error for select-->
+    <mat-error *ngIf="controlDir.control.errors?.required && controlDir.control.touched">Field is required</mat-error>
+</mat-form-field>

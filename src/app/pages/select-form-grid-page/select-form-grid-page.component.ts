@@ -18,9 +18,9 @@ export class SelectFormGridPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.gridForm = this.formBuilder.group( {
-      rowsNumber: [ 1, [ Validators.min( 1 ), Validators.max( 10 ), Validators.required ] ],
+      rowsNumber: [ 1, [ Validators.min( 1 ), Validators.max( 5 ), Validators.required ] ],
       rowsHeight: [ 100, [ Validators.max( 500 ), Validators.min( 100 ), Validators.required ] ],
-      colsNumber: [ 1, [ Validators.min( 1 ), Validators.max( 8 ), Validators.required ] ],
+      colsNumber: [ 1, [ Validators.min( 1 ), Validators.max( 4 ), Validators.required ] ],
       colsWidth: [ 200, [ Validators.min( 200 ), Validators.max( 500 ), Validators.required ] ]
     } )
   }
