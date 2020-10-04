@@ -5,17 +5,22 @@
             <mat-card-content>
                 <mat-grid-list [cols]='gridParams.colsNumber' [rowHeight]=" gridParams.rowsHeight ">
                     <mat-grid-tile *ngFor="let control of controls; let i=index">
-                        {{control| json}}
-                        <app-generic-input *ngIf="isInputType(control)" [control]="control" [name]="'input-'+i" ngModel ngDefaultControl>
-                        </app-generic-input>
-                        <app-generic-textarea *ngIf="control.type =='textarea'" [control]="control" [name]="'textarea-'+i" ngModel ngDefaultControl>
-                        </app-generic-textarea>
-                        <app-generic-select *ngIf="control.type.indexOf('select') >-1" [control]="control" [name]="'select-'+i" ngModel ngDefaultControl>
-                        </app-generic-select>
-                        <app-generic-radio-button *ngIf="control.type =='radio button'" [control]="control" [name]="'radio-button-'+i" ngModel ngDefaultControl>
-                        </app-generic-radio-button>
-                        <app-generic-button *ngIf="isButtonType(control)" [control]="control" [name]="'button-'+i" [attr.disabledButton]='form.invalid' ngModel ngDefaultControl>
-                        </app-generic-button>
+                        <mat-card>
+                            <mat-card-content>
+                                <!-- {{control| json}} -->
+                                <app-generic-input *ngIf="isInputType(control)" [control]="control" [name]="'input-'+i" ngModel ngDefaultControl>
+                                </app-generic-input>
+                                <app-generic-textarea *ngIf="control.type =='textarea'" [control]="control" [name]="'textarea-'+i" ngModel ngDefaultControl>
+                                </app-generic-textarea>
+                                <app-generic-select *ngIf="control.type.indexOf('select') >-1" [control]="control" [name]="'select-'+i" ngModel ngDefaultControl>
+                                </app-generic-select>
+                                <app-generic-radio-button *ngIf="control.type =='radio button'" [control]="control" [name]="'radio-button-'+i" ngModel ngDefaultControl>
+                                </app-generic-radio-button>
+                                <app-generic-button *ngIf="isButtonType(control)" [control]="control" [name]="'button-'+i" [attr.disabledButton]='form.invalid' ngModel ngDefaultControl>
+                                </app-generic-button>
+                            </mat-card-content>
+                        </mat-card>
+
                     </mat-grid-tile>
                 </mat-grid-list>
             </mat-card-content>

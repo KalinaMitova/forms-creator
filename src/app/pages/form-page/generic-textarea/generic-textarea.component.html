@@ -4,6 +4,5 @@
     <textarea matInput #textarea (textarea)="onChange($event.target.value)" placeholder="{{control.label}}"></textarea> -->
     <!-- Errors for Textarea-->
     <mat-error *ngIf="controlDir.control.errors?.required && controlDir.control.touched">Field is required</mat-error>
-
-    {{controlDir.control.errors | json}}
+    errors: {{controlDir.control.errors | json}}
 </mat-form-field>
